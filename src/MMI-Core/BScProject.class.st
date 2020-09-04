@@ -8,7 +8,8 @@ Class {
 		'year',
 		'institution',
 		'month',
-		'numberOfPages'
+		'numberOfPages',
+		'keywords'
 	],
 	#category : #'MMI-Core'
 }
@@ -20,8 +21,9 @@ BScProject class >> exampleBScProject [
 	p1 key: 'Mine2010a'.
 	p1 author: 'Roberto Minelli'.
 	p1 title: 'Commit 2.0 for Eclipse: Enriching Commit Comments with Software Visualization'.
+	p1 keywords: 'pub-iene, proj-dicosa'.
 	p1 month: Month june.
-	p1 year: 2013.
+	p1 year: 2010.
 	p1 numberOfPages: 31.
 	p1 institution: 'USI, Lugano, Switzerland'.
 	^p1
@@ -37,12 +39,12 @@ BScProject >> author: anObject [
 	author := anObject
 ]
 
-{ #category : #public }
+{ #category : #'private-bibtex' }
 BScProject >> generateBibTexAuthorLine [
 	^Character tab asString, 'Author 		= 	{', self author, '},\' withCRs
 ]
 
-{ #category : #public }
+{ #category : #'private-bibtex' }
 BScProject >> generateBibTexClosingLine [
 	^'}\' withCRs
 ]
@@ -58,12 +60,6 @@ BScProject >> generateBibTexEntry [
 	Type 		=	{Bachelor thesis},
 	Year 		=	{', self year asString, '}
 }'
-]
-
-{ #category : #public }
-BScProject >> generateBibTexEntry2 [
-	^'@techreport{', self key, ',\ Author 		= 	{', self author, '},\ Institution 	=	{', self institution,  '},\ Month 		=	', self month monthAbbreviation asLowercase, ',\ Title 		=	{', self title, '},\ Numpages 	=	{', self numberOfPages asString, '},\ Type 		=	{Bachelor thesis},\ Year 		=	{', self year asString, '}\}' withCRs
-
 ]
 
 { #category : #public }
@@ -83,32 +79,32 @@ BScProject >> generateBibTexEntry3 [
 	
 ]
 
-{ #category : #public }
+{ #category : #'private-bibtex' }
 BScProject >> generateBibTexInstitutionLine [
 	^Character tab asString, 'Institution = 	{', self institution, '},\' withCRs
 ]
 
-{ #category : #public }
+{ #category : #'private-bibtex' }
 BScProject >> generateBibTexKeyLine [
 	^'@techreport{', self key, ',\' withCRs
 ]
 
-{ #category : #public }
+{ #category : #'private-bibtex' }
 BScProject >> generateBibTexMonthLine [
 	^Character tab asString, 'Month 		= 	', self month monthAbbreviation asLowercase,',\' withCRs
 ]
 
-{ #category : #public }
+{ #category : #'private-bibtex' }
 BScProject >> generateBibTexPagesLine [
 	^Character tab asString, 'Numpages 	= 	{', self numberOfPages asString, '},\' withCRs
 ]
 
-{ #category : #public }
+{ #category : #'private-bibtex' }
 BScProject >> generateBibTexTitleLine [
 	^Character tab asString, 'Title 		= 	{', self title, '},\' withCRs
 ]
 
-{ #category : #public }
+{ #category : #'private-bibtex' }
 BScProject >> generateBibTexYearLine [
 	^Character tab asString, 'Year 		= 	{', self year asString,'}\' withCRs
 ]
@@ -131,6 +127,16 @@ BScProject >> key [
 { #category : #accessing }
 BScProject >> key: anObject [
 	key := anObject
+]
+
+{ #category : #accessing }
+BScProject >> keywords [
+	^ keywords
+]
+
+{ #category : #accessing }
+BScProject >> keywords: anObject [
+	keywords := anObject
 ]
 
 { #category : #accessing }
