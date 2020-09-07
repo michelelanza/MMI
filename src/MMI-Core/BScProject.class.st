@@ -1,11 +1,8 @@
 Class {
 	#name : #BScProject,
-	#superclass : #Object,
+	#superclass : #MMIArtifact,
 	#instVars : [
 		'key',
-		'title',
-		'author',
-		'year',
 		'institution',
 		'month',
 		'numberOfPages',
@@ -47,16 +44,6 @@ BScProject >> advisor [
 { #category : #accessing }
 BScProject >> advisor: anObject [
 	advisor := anObject
-]
-
-{ #category : #accessing }
-BScProject >> author [
-	^ author
-]
-
-{ #category : #accessing }
-BScProject >> author: anObject [
-	author := anObject
 ]
 
 { #category : #accessing }
@@ -187,24 +174,4 @@ BScProject >> numberOfPages [
 { #category : #accessing }
 BScProject >> numberOfPages: anObject [
 	numberOfPages := anObject
-]
-
-{ #category : #accessing }
-BScProject >> title [
-	^ title
-]
-
-{ #category : #accessing }
-BScProject >> title: anObject [
-	title := anObject
-]
-
-{ #category : #accessing }
-BScProject >> year [
-	^ year
-]
-
-{ #category : #accessing }
-BScProject >> year: anObject [
-	year := anObject
 ]
