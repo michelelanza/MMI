@@ -22,8 +22,10 @@ BibTexItem >> artifact: anObject [
 BibTexItem >> generateBScProject [
 	self artifact: BScProject new.
 	rawText linesDo: [ :eachLine | 
-	(eachLine includesSubstring: 'Author') ifTrue: [ self processAuthorLine: eachLine].
-	(eachLine includesSubstring: 'Institution') ifTrue: [ self processInstitutionLine: eachLine].]
+		(eachLine includesSubstring: 'Author') ifTrue: [ self processAuthorLine: eachLine].
+		(eachLine includesSubstring: 'Institution') ifTrue: [ self processInstitutionLine: eachLine].
+		(eachLine includesSubstring: 'Title') ifTrue: [ self processTitleLine: eachLine].
+	]
  
 ]
 
@@ -44,6 +46,13 @@ BibTexItem >> processInstitutionLine: eachLine [
 		| institution |
 		institution := (eachLine findBetweenSubstrings: #({ })) at: 2.
 		self artifact institution: institution.
+]
+
+{ #category : #public }
+BibTexItem >> processTitleLine: eachLine [
+		| title |
+		title := (eachLine findBetweenSubstrings: #({ })) at: 2.
+		self artifact title: title.
 ]
 
 { #category : #accessing }
