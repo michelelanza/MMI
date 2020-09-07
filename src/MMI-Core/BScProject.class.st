@@ -9,7 +9,9 @@ Class {
 		'institution',
 		'month',
 		'numberOfPages',
-		'keywords'
+		'keywords',
+		'advisor',
+		'coAdvisors'
 	],
 	#category : #'MMI-Core'
 }
@@ -22,11 +24,29 @@ BScProject class >> exampleBScProject [
 	p1 author: 'Roberto Minelli'.
 	p1 title: 'Commit 2.0 for Eclipse: Enriching Commit Comments with Software Visualization'.
 	p1 keywords: 'pub-iene, proj-dicosa'.
+	p1 advisor: 'Michele Lanza'.
+	p1 addCoAdvisor: 'Marco D''Ambros'.
 	p1 month: Month june.
 	p1 year: 2010.
 	p1 numberOfPages: 31.
 	p1 institution: 'USI, Lugano, Switzerland'.
 	^p1
+]
+
+{ #category : #accessing }
+BScProject >> addCoAdvisor: anObject [
+	coAdvisors ifNil: [ 	coAdvisors := OrderedCollection new.
+						coAdvisors add: anObject. ] ifNotNil:  [ coAdvisors add: anObject ]
+]
+
+{ #category : #accessing }
+BScProject >> advisor [
+	^ advisor
+]
+
+{ #category : #accessing }
+BScProject >> advisor: anObject [
+	advisor := anObject
 ]
 
 { #category : #accessing }
@@ -37,6 +57,16 @@ BScProject >> author [
 { #category : #accessing }
 BScProject >> author: anObject [
 	author := anObject
+]
+
+{ #category : #accessing }
+BScProject >> coAdvisors [
+	^ coAdvisors
+]
+
+{ #category : #accessing }
+BScProject >> coAdvisors: anObject [
+	coAdvisors := anObject
 ]
 
 { #category : #'private-bibtex' }
